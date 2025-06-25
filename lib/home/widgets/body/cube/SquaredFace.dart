@@ -4,13 +4,12 @@ class SquaredFace extends StatelessWidget {
   final ValueNotifier<String> textNotifier;
   final ValueNotifier<double> fontSizeNotifier;
   final ValueNotifier<double> sizeNotifier;
-  final Color backgroundColor;
+  final List<Color> colors;
   const SquaredFace({
     super.key,
     required this.textNotifier,
-    required this.backgroundColor,
     required this.sizeNotifier,
-    required this.fontSizeNotifier,
+    required this.fontSizeNotifier, required this.colors,
   });
 
   @override
@@ -19,7 +18,13 @@ class SquaredFace extends StatelessWidget {
       valueListenable: sizeNotifier,
       builder: (context, size, child) {
         return Container(
-          color: backgroundColor,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                                  begin: Alignment.topRight,
+                                  end: Alignment.bottomLeft,
+                                  colors: colors,
+                                )
+          ),
           height: size,
           width: size,
           child: Center(
