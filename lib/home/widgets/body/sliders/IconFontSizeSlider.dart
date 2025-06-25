@@ -20,14 +20,19 @@ class IconFontSizeSlider extends StatelessWidget {
             }
           ),
         ),
-        Slider(
-          activeColor: Colors.deepPurpleAccent,
-          min: 1,
-          max: 100,
-          value: fontSizeNotifier.value * 1.0,
-          onChanged: (v) {
-            fontSizeNotifier.value = v.toInt();
-          },
+        ValueListenableBuilder(
+          valueListenable: fontSizeNotifier,
+          builder: (context, value, child) {
+            return Slider(
+              activeColor: Colors.deepPurpleAccent,
+              min: 1,
+              max: 100,
+              value: value * 1.0,
+              onChanged: (v) {
+                fontSizeNotifier.value = v.toInt();
+              },
+            );
+          }
         ),
       ],
     );

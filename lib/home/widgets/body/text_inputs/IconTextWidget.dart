@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 class IconTextWidget extends StatelessWidget {
-  final TextEditingController textControler;
   final ValueNotifier<String> imageTextNotifier;
-  const IconTextWidget({super.key, required this.textControler, required this.imageTextNotifier});
+  final String label;
+  const IconTextWidget({super.key, required this.imageTextNotifier, required this.label});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-              controller: textControler,
               onChanged: (v) => imageTextNotifier.value = v,
               style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
@@ -20,7 +19,7 @@ class IconTextWidget extends StatelessWidget {
                 fillColor: Colors.white,
                 border: UnderlineInputBorder(),
                 label: Text(
-                  "Image Text:",
+                  label,
                   style: TextStyle(color: Colors.white),
                 ),
               ),
